@@ -45,20 +45,20 @@ public class BiografReservationService {
 
     public ReservationDto opretReservation(OpretReservationRequestDto request) {
         // Validate all forestillingId exist and capacity is enough
-        for (ReservationsPostDto linje : request.getPosts()) {
-            ForestillingDto f = forestillinger.get(linje.getForestillingId());
+        for (ReservationsPostDto posts: request.getPosts()) {
+            ForestillingDto f = forestillinger.get(posts.getForestillingId());
             if (f == null) {
-                throw new NotFoundException("Forestilling findes ikke: id=" + linje.getForestillingId());
+                throw new NotFoundException("Forestilling findes ikke: id=" + posts.getForestillingId());
             }
-            if (f.getLedigePladser() < linje.getAntalPladser()) {
-                throw new ConflictException("Ikke nok ledige pladser for forestilling id=" + linje.getForestillingId());
+            if (f.getLedigePladser() < posts.getAntalPladser()) {
+                throw new ConflictException("Ikke nok ledige pladser for forestilling id=" + posts.getForestillingId());
             }
         }
 
         // Deduct seats (simple, not transactional)
-        for (ReservationsPostDto linje : request.getPosts()) {
-            ForestillingDto f = forestillinger.get(linje.getForestillingId());
-            f.setLedigePladser(f.getLedigePladser() - linje.getAntalPladser());
+        for (ReservationsPostDto posts : request.getPosts()) {
+            ForestillingDto f = forestillinger.get(posts.getForestillingId());
+            f.setLedigePladser(f.getLedigePladser() - posts.getAntalPladser());
         }
 
         long id = reservationIdSeq.incrementAndGet();
