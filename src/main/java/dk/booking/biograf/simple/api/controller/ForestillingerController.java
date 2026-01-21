@@ -27,4 +27,9 @@ public class ForestillingerController {
     ) {
         return service.listForestilinger(dato);
     }
+
+    @GetMapping("/{id}")
+    public ForestillingDto getForestillingById(@PathVariable long id) {
+        return service.findForestillingById(id);
+    }
 }

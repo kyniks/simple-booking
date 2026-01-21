@@ -31,7 +31,7 @@ public class ReservationerController {
                 .body(created);
     }
 
-    @DeleteMapping("/{reservationId}")
+    @DeleteMapping("/biograf/api/{reservationId}")
     public ResponseEntity<Void> aflysReservation(@PathVariable long reservationId) {
         service.aflysReservation(reservationId);
         return ResponseEntity.noContent().build(); // 204

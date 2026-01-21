@@ -7,7 +7,9 @@ import dk.booking.biograf.simple.api.dto.ReservationsPostDto;
 import dk.booking.biograf.simple.api.exceptions.ConflictException;
 import dk.booking.biograf.simple.api.exceptions.NotFoundException;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -27,7 +29,7 @@ public class BiografReservationService {
     private final AtomicLong reservationIdSeq = new AtomicLong(9000);
 
     public BiografReservationService() {
-        // Seed a couple of screenings (examples)
+        // Seed a couple of forestillings (examples)
         forestillinger.put(101L, new ForestillingDto(
                 101L, "One Upon Time in the West", OffsetDateTime.now().withHour(19).withMinute(30), 50, 42
         ));
@@ -42,6 +44,18 @@ public class BiografReservationService {
                 .sorted(Comparator.comparing(ForestillingDto::getStartTid))
                 .toList();
     }
+
+    public ForestillingDto findForestillingById(long id) {
+        ForestillingDto f = forestillinger.get(id);
+        if (f == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Forestilling findes ikke: id=" + id
+            );
+        }
+        return f;
+    }
+
 
     public ReservationDto opretReservation(OpretReservationRequestDto request) {
         // Validate all forestillingId exist and capacity is enough

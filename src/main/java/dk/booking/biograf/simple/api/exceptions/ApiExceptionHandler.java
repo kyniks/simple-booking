@@ -14,6 +14,14 @@ import jakarta.servlet.http.HttpServletRequest;
 @RestControllerAdvice
 public class ApiExceptionHandler {
 
+    /**
+     *  {
+     *     "timestamp": "2026-01-21T09:39:11.241Z",
+     *     "status": 404,
+     *     "error": "Not Found",
+     *      "path": "/api/reservationer/9001"
+     *    }
+     */
     @ExceptionHandler(NotFoundException.class)
     public ProblemDetail handleNotFound(NotFoundException ex, HttpServletRequest request) {
         ProblemDetail pd = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
@@ -23,6 +31,16 @@ public class ApiExceptionHandler {
         return pd;
     }
 
+
+    /**
+     * {
+     *     "detail": "Ikke nok ledige pladser for forestilling id=101",
+     *     "instance": "/biograf/api/reservationer",
+     *     "status": 409,
+     *     "title": "Conflict",
+     *     "path": "/biograf/api/reservationer"
+     * }
+     */
     @ExceptionHandler(ConflictException.class)
     public ProblemDetail handleConflict(ConflictException ex, HttpServletRequest request) {
         ProblemDetail pd = ProblemDetail.forStatus(HttpStatus.CONFLICT);
