@@ -152,8 +152,6 @@ components:
           type: string
           format: date-time
           example: "2026-01-19T10:45:00+01:00"
-        kunde:
-          $ref: '#/components/schemas/Kunde'
         posts:
           type: array
           items:
@@ -161,7 +159,6 @@ components:
       required:
         - id
         - oprettetTid
-        - kunde
         - posts
 
     ReservationsPost:
@@ -176,24 +173,6 @@ components:
       required:
         - forestillingId
         - antalPladser
-    Kunde:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 1
-        navn:
-          type: string
-          example: "Jens Janson"
-        email:
-          type: string
-          example: "janson@example.com"
-      required:
-        - id
-        - navn
-        - email
-
     Sal:
       type: object
       properties:

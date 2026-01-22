@@ -7,7 +7,6 @@ import java.util.List;
  */
 
 public record Reservation(Long id,
-                          Kunde kunde,
                           OffsetDateTime opretTid,
                           List<ReservationPost> lines) {}
 

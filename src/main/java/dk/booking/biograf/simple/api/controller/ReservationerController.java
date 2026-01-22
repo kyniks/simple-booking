@@ -2,7 +2,7 @@ package dk.booking.biograf.simple.api.controller;
 
 import dk.booking.biograf.simple.api.dto.OpretReservationRequestDto;
 import dk.booking.biograf.simple.api.dto.ReservationDto;
-import dk.booking.biograf.simple.service.BiografReservationService;
+import dk.booking.biograf.simple.service.ReservationService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,25 +15,22 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/biograf/api/reservationer")
 public class ReservationerController {
 
-    private final BiografReservationService service;
+    private final ReservationService reservationService;
 
-    public ReservationerController(BiografReservationService service) {
-        this.service = service;
+    public ReservationerController(ReservationService reservationService) {
+        this.reservationService = reservationService;
     }
 
-    @PostMapping
-    public ResponseEntity<ReservationDto> opretReservation(@Valid @RequestBody OpretReservationRequestDto request
-    ) {
-        ReservationDto created = service.opretReservation(request);
-
-        return ResponseEntity
-                .status(201)
-                .body(created);
+    @PostMapping("opret")
+    public ResponseEntity<ReservationDto> opretReservation(@RequestBody @Valid OpretReservationRequestDto req) {
+        ReservationDto created = reservationService.opretReservation(req);
+        return ResponseEntity.status(201).body(created);
     }
 
-    @DeleteMapping("/biograf/api/{reservationId}")
-    public ResponseEntity<Void> aflysReservation(@PathVariable long reservationId) {
-        service.aflysReservation(reservationId);
-        return ResponseEntity.noContent().build(); // 204
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> aflysReservation(@PathVariable long id) {
+        reservationService.aflysReservation(id);
+        return ResponseEntity.noContent().build();
     }
 }
+

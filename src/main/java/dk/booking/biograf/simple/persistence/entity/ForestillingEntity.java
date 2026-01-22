@@ -31,12 +31,12 @@ public class ForestillingEntity {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public FilmEntity getMovie() { return film; }
-    public void setMovie(FilmEntity movie) { this.film = film; }
+    public FilmEntity getFilm() { return film; }
+    public void setFilm(FilmEntity film) { this.film = film; }
 
     public SalEntity getSal() { return sal; }
     public void setSal(SalEntity sal) { this.sal = sal; }
 
     public OffsetDateTime getStartTid(){ return startTid; }
-    public void setStartTid(OffsetDateTime startTime) { this.startTid = startTid; }
+    public void setStartTid(OffsetDateTime startTid) { this.startTid = startTid; }
 }

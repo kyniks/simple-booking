@@ -27,6 +27,6 @@ public class SalEntity {
     public String getNavn() { return navn; }
     public void setName(String name) { this.navn = navn; }
 
-    public Integer getKapasitet() { return kapacitet; }
-    public void setKapasitet(Integer Kapasitet) { this.kapacitet = kapacitet; }
+    public Integer getKapacitet() { return kapacitet; }
+    public void setKapacitet(Integer Kapasitet) { this.kapacitet = kapacitet; }
 }

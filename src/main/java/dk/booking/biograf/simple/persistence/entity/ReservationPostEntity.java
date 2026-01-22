@@ -9,16 +9,15 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "reservation_post")
 public class ReservationPostEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "reservation_id", nullable = false)
     private ReservationEntity reservation;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "forestilling_id", nullable = false)
     private ForestillingEntity forestilling;
 

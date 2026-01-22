@@ -1,13 +1,13 @@
 package dk.booking.biograf.simple.persistence.entity;
 
 import jakarta.persistence.*;
-import org.springframework.data.jpa.repository.query.JpqlQueryBuilder;
 
 /**
  * Created by birol on 21-01-2026
  *
  */
 
+@Entity
 @Table(name = "film")
 public class FilmEntity {
     @Id
@@ -15,9 +15,9 @@ public class FilmEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String title;
+    private String titel;
 
-    @Column(name = "varighed_min", nullable = false)
+    @Column(name = "varighed_minutter", nullable = false)
     private Integer varighedMinuter;
 
     public FilmEntity() {}
@@ -25,8 +25,8 @@ public class FilmEntity {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public String getTitel() { return titel; }
+    public void setTitel(String titel) { this.titel = titel; }
 
     public Integer getVarighedMinuter() { return varighedMinuter; }
     public void setVarighedMinuter(Integer varighedMinuter) { this.varighedMinuter = varighedMinuter; }

@@ -1,7 +1,7 @@
 package dk.booking.biograf.simple.api.controller;
 
 import dk.booking.biograf.simple.api.dto.ForestillingDto;
-import dk.booking.biograf.simple.service.BiografReservationService;
+import dk.booking.biograf.simple.service.ForestillingService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,21 +15,21 @@ import java.util.List;
 @RequestMapping("/biograf/api/forestillinger")
 public class ForestillingerController {
 
-    private final BiografReservationService service;
+    private final ForestillingService forestillingService;
 
-    public ForestillingerController(BiografReservationService service) {
-        this.service = service;
+    public ForestillingerController(ForestillingService forestillingService) {
+        this.forestillingService = forestillingService;
     }
 
     @GetMapping
     public List<ForestillingDto> getForestilinger( @RequestParam(name = "dato", required = false)
                                                     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dato
     ) {
-        return service.listForestilinger(dato);
+        return forestillingService.listForestilinger(dato);
     }
 
     @GetMapping("/{id}")
     public ForestillingDto getForestillingById(@PathVariable long id) {
-        return service.findForestillingById(id);
+        return forestillingService.findForestillingById(id);
     }
 }

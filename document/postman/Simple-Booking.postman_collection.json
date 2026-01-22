@@ -1,0 +1,67 @@
+{
+  "info": {
+    "_postman_id": "93681352-043b-4e62-81f6-9326f295453c",
+    "name": "Simple-Booking",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48885609",
+    "_collection_link": "https://go.postman.co/collection/48885609-93681352-043b-4e62-81f6-9326f295453c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Forestillinger",
+      "item": [
+        {
+          "name": "Forestillinger",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Find-Forestillingen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/biograf/api/forestillinger/101",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "biograf",
+                "api",
+                "forestillinger",
+                "101"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reservationer",
+      "item": [
+        {
+          "name": "Opret",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

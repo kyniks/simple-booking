@@ -1,8 +1,8 @@
 package dk.booking.biograf.simple.api.dto;
 
-import java.util.List;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
+
+import java.util.List;
 /**
  * Created by birol on 19-01-2026 at 20:55
  */
@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotEmpty;
 public class OpretReservationRequestDto {
 
     @NotEmpty
-    private List<@Valid ReservationsPostDto> posts;
+    private List<ReservationsPostDto> posts;
 
     public OpretReservationRequestDto() {}
 
